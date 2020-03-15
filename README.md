@@ -1,6 +1,6 @@
 # eslint-plugin-document-write
 
-ESLint plugin to disallow document.write[ln]()
+ESLint plugin to disallow `document.write()` and `document.writeln()`.
 
 ## Install
 
