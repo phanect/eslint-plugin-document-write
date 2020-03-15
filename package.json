@@ -1,0 +1,31 @@
+{
+  "name": "eslint-plugin-no-document-write",
+  "version": "1.0.0",
+  "description": "ESLint plugin to disallow document.write[ln]()",
+  "main": "main.js",
+  "scripts": {
+    "lint": "eslint --ext=.js,.jsx,.ts,.tsx .",
+    "release": "npm publish --access public --non-interactive",
+    "test": "jest --verbose"
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin"
+  ],
+  "author": "Jumpei Ogawa <phanective@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phanect/eslint-plugin-no-document-write.git"
+  },
+  "bugs": {
+    "url": "https://github.com/phanect/eslint-plugin-no-document-write/issues"
+  },
+  "homepage": "https://github.com/phanect/eslint-plugin-no-document-write",
+  "dependencies": {
+    "eslint": "^6.0.0"
+  },
+  "devDependencies": {
+    "@phanect/eslint-plugin": "latest"
+  }
+}
