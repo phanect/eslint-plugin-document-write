@@ -1,12 +1,12 @@
 {
-  "name": "eslint-plugin-no-document-write",
+  "name": "eslint-plugin-document-write",
   "version": "1.0.0",
   "description": "ESLint plugin to disallow document.write[ln]()",
   "main": "main.js",
   "scripts": {
     "lint": "eslint --ext=.js,.jsx,.ts,.tsx .",
     "release": "npm publish --access public --non-interactive",
-    "test": "jest --verbose"
+    "test": "mocha --reporter dot tests/**/*"
   },
   "keywords": [
     "eslint",
@@ -26,6 +26,8 @@
     "eslint": "^6.0.0"
   },
   "devDependencies": {
-    "@phanect/eslint-plugin": "latest"
+    "@phanect/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "^2.23.0",
+    "mocha": "^7.1.0"
   }
 }
