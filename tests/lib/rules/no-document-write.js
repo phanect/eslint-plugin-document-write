@@ -28,7 +28,6 @@ for (const ruleTester of [ jsRuleTester, tsRuleTester ]) {
   ruleTester.run("no-document-write", rule, {
     valid: [
       {
-        filename: "./target.js",
         code: `
           console.log("This code should be valid since there is no document.write[ln]()");
         `,
@@ -37,7 +36,6 @@ for (const ruleTester of [ jsRuleTester, tsRuleTester ]) {
 
     invalid: [
       {
-        filename: "./target.js",
         code: `
           document.write("foo");
           document.writeln("bar");
