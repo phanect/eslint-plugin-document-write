@@ -59,6 +59,53 @@ for (const ruleTester of [ jsRuleTester, tsRuleTester ]) {
       },
       {
         code: `
+          const d = document;
+          d.write("I'm document.write()!");
+          d.writeln("I'm document.writeln()!");
+        `,
+        errors: [
+          {
+            message: "document.write() is not allowed. Use .innerHTML or .appendChild() instead",
+            line: 3,
+            endLine: 3,
+            column: 11,
+            endColumn: 18,
+          },
+          {
+            message: "document.writeln() is not allowed. Use .innerHTML or .appendChild() instead",
+            line: 4,
+            endLine: 4,
+            column: 11,
+            endColumn: 20,
+          },
+        ],
+      },
+      {
+        code: `
+          var d = document;
+          console.log(d); // Read only reference
+          d.write("I'm document.write()!");
+          d.writeln("I'm document.writeln()!");
+        `,
+        errors: [
+          {
+            message: "document.write() is not allowed. Use .innerHTML or .appendChild() instead",
+            line: 4,
+            endLine: 4,
+            column: 11,
+            endColumn: 18,
+          },
+          {
+            message: "document.writeln() is not allowed. Use .innerHTML or .appendChild() instead",
+            line: 5,
+            endLine: 5,
+            column: 11,
+            endColumn: 20,
+          },
+        ],
+      },
+      {
+        code: `
           const w = document.write;
           const wl = document.writeln;
           w("I'm document.write()!");
