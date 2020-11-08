@@ -32,6 +32,58 @@ for (const ruleTester of [ jsRuleTester, tsRuleTester ]) {
           console.log("This code should be valid since there is no document.write[ln]()");
         `,
       },
+      {
+        code: `
+          const d = document;
+          if (true) {
+            const d = {
+              write: (str) => {
+                console.log("I'm not document.write()!", str);
+              }
+            }
+            d.write("I'm not document.write()!");
+          }
+        `,
+      },
+      {
+        code: `
+          let d = {
+            write: (str) => {
+              console.log("I'm not document.write()!", str);
+            }
+          };
+          d.write("I'm not document.write()!");
+
+          d = document;
+        `,
+      },
+      {
+        code: `
+          let d = document;
+          d = {
+            write: (str) => {
+              console.log("I'm not document.write()!", str);
+            }
+          };
+          d.write("I'm not document.write()!");
+        `,
+      },
+      {
+        code: `
+          let d;
+          if (false) {
+            d = document;
+          } else {
+            d = {
+              write: (str) => {
+                console.log("I'm not document.write()!", str);
+              }
+            };
+
+            d.write("I may be document.write()!");
+          }
+        `,
+      },
     ],
 
     invalid: [
@@ -125,6 +177,68 @@ for (const ruleTester of [ jsRuleTester, tsRuleTester ]) {
             endLine: 3,
             column: 22,
             endColumn: 38,
+          },
+        ],
+      },
+      {
+        code: `
+          let d;
+          if (false) {
+            d = document;
+          } else {
+            d = {
+              write: (str) => {
+                console.log("I'm not document.write()!", str);
+              }
+            };
+          }
+
+          d.write("I may be document.write()!");
+        `,
+        errors: [
+          {
+            message: "document.write() is not allowed. Use .innerHTML or .appendChild() instead",
+            line: 13,
+            endLine: 13,
+            column: 11,
+            endColumn: 18,
+          },
+        ],
+      },
+      {
+        code: `
+          let d = {
+            write: (str) => {
+              console.log("I'm not document.write()!", str);
+            }
+          };
+
+          d = document;
+          d.write("I'm document.write()");
+        `,
+        errors: [
+          {
+            message: "document.write() is not allowed. Use .innerHTML or .appendChild() instead",
+            line: 9,
+            endLine: 9,
+            column: 11,
+            endColumn: 18,
+          },
+        ],
+      },
+      {
+        code: `
+          (function(d) {
+            d.write("I'm document.write()");
+          })(document);
+        `,
+        errors: [
+          {
+            message: "document.write() is not allowed. Use .innerHTML or .appendChild() instead",
+            line: 9,
+            endLine: 9,
+            column: 11,
+            endColumn: 18,
           },
         ],
       },
