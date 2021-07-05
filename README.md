@@ -1,4 +1,6 @@
 # eslint-plugin-document-write
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fphanect%2Feslint-plugin-document-write.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fphanect%2Feslint-plugin-document-write?ref=badge_shield)
+
 
 ESLint plugin to disallow `document.write()` and `document.writeln()`.
 
@@ -40,3 +42,6 @@ See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/write#Notes)
 ## License
 
 [MIT](http://vjpr.mit-license.org)
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fphanect%2Feslint-plugin-document-write.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fphanect%2Feslint-plugin-document-write?ref=badge_large)
